@@ -1,0 +1,1304 @@
+[
+    {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "approved",
+                "type": "bool"
+            }
+        ],
+        "name": "ApprovalForAll",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint32",
+                        "name": "eventStartDate",
+                        "type": "uint32"
+                    },
+                    {
+                        "internalType": "uint32",
+                        "name": "eventEndDate",
+                        "type": "uint32"
+                    },
+                    {
+                        "components": [
+                            {
+                                "internalType": "uint256",
+                                "name": "eventIDforTicket",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "ticketName",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "ticketFixPrice",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "totalCopies",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "ticketURI",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "uint32",
+                                "name": "copiesSold",
+                                "type": "uint32"
+                            },
+                            {
+                                "internalType": "enum GlobalPassAuction.saleTypeChoice",
+                                "name": "ticketSaleType",
+                                "type": "uint8"
+                            }
+                        ],
+                        "internalType": "struct GlobalPass.TicketType[]",
+                        "name": "eventTickets",
+                        "type": "tuple[]"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "organiserId",
+                        "type": "uint256"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct GlobalPass.Event",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "name": "EventRegistered",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "previousOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "Paused",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "eventIDforTicket",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ticketName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "ticketFixPrice",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "totalCopies",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ticketURI",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint32",
+                        "name": "copiesSold",
+                        "type": "uint32"
+                    },
+                    {
+                        "internalType": "enum GlobalPassAuction.saleTypeChoice",
+                        "name": "ticketSaleType",
+                        "type": "uint8"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct GlobalPass.TicketType",
+                "name": "",
+                "type": "tuple"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "TicketCreated",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256[]",
+                "name": "ids",
+                "type": "uint256[]"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "TransferBatch",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            }
+        ],
+        "name": "TransferSingle",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "value",
+                "type": "string"
+            },
+            {
+                "indexed": true,
+                "internalType": "bytes",
+                "name": "id",
+                "type": "bytes"
+            }
+        ],
+        "name": "URI",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "value",
+                "type": "string"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "URI",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "Unpaused",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "name": "availableForAuction",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "name": "removeFormSale",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "packageID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_eventID",
+                "type": "uint256"
+            }
+        ],
+        "name": "AcceptYourHighestBid",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "nftOwner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "packageID",
+                "type": "uint256"
+            }
+        ],
+        "name": "CheckSaleType",
+        "outputs": [
+            {
+                "internalType": "enum GlobalPassAuction.saleTypeChoice",
+                "name": "",
+                "type": "uint8"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "CopiesOnBidOrSale",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "CurrentStatus",
+        "outputs": [
+            {
+                "internalType": "enum GlobalPassAuction.saleTypeChoice",
+                "name": "",
+                "type": "uint8"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "packageID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_bidAmount",
+                "type": "uint256"
+            }
+        ],
+        "name": "addAuctionBid",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint16",
+                "name": "ticketTypesCount",
+                "type": "uint16"
+            },
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "eventIDforTicket",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ticketName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "ticketFixPrice",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "totalCopies",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ticketURI",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint32",
+                        "name": "copiesSold",
+                        "type": "uint32"
+                    },
+                    {
+                        "internalType": "enum GlobalPassAuction.saleTypeChoice",
+                        "name": "ticketSaleType",
+                        "type": "uint8"
+                    }
+                ],
+                "internalType": "struct GlobalPass.TicketType[]",
+                "name": "_ticketTypes",
+                "type": "tuple[]"
+            }
+        ],
+        "name": "addTicketType",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address[]",
+                "name": "accounts",
+                "type": "address[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ids",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "balanceOfBatch",
+        "outputs": [
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "value",
+                "type": "uint256"
+            }
+        ],
+        "name": "burn",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ids",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "values",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "burnBatch",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "packageID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_eventID",
+                "type": "uint256"
+            }
+        ],
+        "name": "buyPackageForFixedPrice",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_ticketID",
+                "type": "uint256"
+            }
+        ],
+        "name": "checkMintedTickets",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "contractStatus",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_eventID",
+                "type": "uint256"
+            }
+        ],
+        "name": "deleteEvent",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "eventsCount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_eventID",
+                "type": "uint256"
+            }
+        ],
+        "name": "getEventDetails",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "eventIDforTicket",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ticketName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "ticketFixPrice",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "totalCopies",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ticketURI",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint32",
+                        "name": "copiesSold",
+                        "type": "uint32"
+                    },
+                    {
+                        "internalType": "enum GlobalPassAuction.saleTypeChoice",
+                        "name": "ticketSaleType",
+                        "type": "uint8"
+                    }
+                ],
+                "internalType": "struct GlobalPass.TicketType[]",
+                "name": "eventTickets",
+                "type": "tuple[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "eventStartDate",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "eventEndDate",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            }
+        ],
+        "name": "isApprovedForAll",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ids",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "amounts",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "mintBatch",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "ticketID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint32",
+                "name": "noOfCopies",
+                "type": "uint32"
+            }
+        ],
+        "name": "mintTicketsWithFixPrice",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "pause",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "paused",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_eventID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "packageID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint16[]",
+                "name": "_ticketIDs",
+                "type": "uint16[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ticketCopiesCount",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "packageFixPrice",
+                "type": "uint256"
+            }
+        ],
+        "name": "placePackageForFixedPrice",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_eventID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "packageID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint16[]",
+                "name": "_ticketIDs",
+                "type": "uint16[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ticketCopiesCount",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint32",
+                "name": "_auctionStartTime",
+                "type": "uint32"
+            },
+            {
+                "internalType": "uint32",
+                "name": "_auctionEndTime",
+                "type": "uint32"
+            },
+            {
+                "internalType": "uint256",
+                "name": "packageMinPrice",
+                "type": "uint256"
+            }
+        ],
+        "name": "placePackageForTimedAuction",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint32",
+                "name": "_eventStartDate",
+                "type": "uint32"
+            },
+            {
+                "internalType": "uint32",
+                "name": "_eventEndDate",
+                "type": "uint32"
+            },
+            {
+                "internalType": "uint16",
+                "name": "ticketTypesCount",
+                "type": "uint16"
+            },
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "eventIDforTicket",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ticketName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "ticketFixPrice",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "totalCopies",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "ticketURI",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint32",
+                        "name": "copiesSold",
+                        "type": "uint32"
+                    },
+                    {
+                        "internalType": "enum GlobalPassAuction.saleTypeChoice",
+                        "name": "ticketSaleType",
+                        "type": "uint8"
+                    }
+                ],
+                "internalType": "struct GlobalPass.TicketType[]",
+                "name": "_TicketTypes",
+                "type": "tuple[]"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_organiserId",
+                "type": "uint256"
+            }
+        ],
+        "name": "registerEvent",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ids",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "amounts",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "safeBatchTransferFrom",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "from",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "data",
+                "type": "bytes"
+            }
+        ],
+        "name": "safeTransferFrom",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "operator",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "approved",
+                "type": "bool"
+            }
+        ],
+        "name": "setApprovalForAll",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "newuri",
+                "type": "string"
+            }
+        ],
+        "name": "setBaseURI",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes4",
+                "name": "interfaceId",
+                "type": "bytes4"
+            }
+        ],
+        "name": "supportsInterface",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "ticketsCount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "tickets_Prices",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "unpause",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_eventID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint32",
+                "name": "_eventStartDate",
+                "type": "uint32"
+            },
+            {
+                "internalType": "uint32",
+                "name": "_eventEndDate",
+                "type": "uint32"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_organiserId",
+                "type": "uint256"
+            }
+        ],
+        "name": "updateEvent",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_eventID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "ticketIDs",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "_newTicketsCount",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "updateTicketCount",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_id",
+                "type": "uint256"
+            }
+        ],
+        "name": "uri",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "user_Balance",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "withdrawAmount",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    }
+]
